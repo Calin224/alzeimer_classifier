@@ -12,7 +12,7 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 # class_names = sorted(next(os.walk("data/train"))[1])
 class_names = ["MildDemented", "ModerateDemented", "NonDemented", "VeryMildDemented"]
 
-weights = torchvision.models.ResNet50_Weights.DEFAULT
+weights = None
 model = torchvision.models.resnet50(weights=weights)
 model.fc = torch.nn.Sequential(
     nn.Dropout(p=0.2),
