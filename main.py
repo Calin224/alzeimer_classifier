@@ -19,11 +19,9 @@ model.fc = torch.nn.Sequential(
     nn.Linear(in_features=2048, out_features=len(class_names))
 ).to(device)
 
-model.load_state_dict(torch.load("models/resnet50_model.pth", map_location=device))
+model.load_state_dict(torch.load("models/resnet50_model.pth", map_location=device), strict=False)
 model = model.to(device)
 model.eval()
-
-transform = weights.transforms()
 
 def pred_image(model: torch.nn.Module,
                img: Image.Image,
@@ -55,11 +53,11 @@ def pred_image(model: torch.nn.Module,
     return class_names[target_image_pred_class.item()]
 
 
-# print(pred_image(model=model,
-#            image_path="data/val/MildDemented/mildDem665.jpg",
-#            class_names=class_names,
-#            image_size=(232, 232),
-#            device=device))
+print(pred_image(model=model,
+                 img=Image.open("data/val/VeryMildDemented/verymildDem383.jpg").convert("RGB"),
+           class_names=class_names,
+           image_size=(232, 232),
+           device=device))
 
 st.title("Medical Image Classification")
 st.write("Upload an image and see the model's prediction.")
@@ -73,6 +71,6 @@ if uploaded_file is not None:
     if st.button("Predict"):
         with st.spinner("Se proceseaza imaginea..."):
             pred_class = pred_image(model=model, img=img, class_names=class_names, transform=transform)
-            if pred_class is "ModerateDemented":
+            if pred_class == "ModerateDemented":
                 pred_class = "Alzeimer Mediu"
         st.success(f"Prediction: {pred_class}")
