@@ -9,7 +9,8 @@ from typing import List, Tuple, Dict
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
-class_names = sorted(next(os.walk("data/train"))[1])
+# class_names = sorted(next(os.walk("data/train"))[1])
+class_names = ["MildDemented", "ModerateDemented", "NonDemented", "VeryMildDemented"]
 
 weights = torchvision.models.ResNet50_Weights.DEFAULT
 model = torchvision.models.resnet50(weights=weights)
