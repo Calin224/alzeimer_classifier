@@ -53,11 +53,11 @@ def pred_image(model: torch.nn.Module,
     return class_names[target_image_pred_class.item()]
 
 
-print(pred_image(model=model,
-                 img=Image.open("data/val/VeryMildDemented/verymildDem383.jpg").convert("RGB"),
-           class_names=class_names,
-           image_size=(232, 232),
-           device=device))
+# print(pred_image(model=model,
+#                  img=Image.open("data/val/VeryMildDemented/verymildDem383.jpg").convert("RGB"),
+#            class_names=class_names,
+#            image_size=(232, 232),
+#            device=device))
 
 st.title("Medical Image Classification")
 st.write("Upload an image and see the model's prediction.")
