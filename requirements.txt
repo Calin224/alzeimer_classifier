@@ -2,3 +2,4 @@ torch
 torchvision
 streamlit
 pillow
+urllib3
