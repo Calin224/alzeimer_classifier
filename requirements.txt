@@ -2,4 +2,3 @@ torch
 torchvision
 streamlit
 pillow
-os
