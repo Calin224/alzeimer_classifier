@@ -77,3 +77,5 @@ if uploaded_file is not None:
             elif pred_class == "MildDemented":
                 pred_class = "Alzheimer – stadiu ușor"
         st.success(f"Prediction: {pred_class}")
+
+
