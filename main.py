@@ -69,5 +69,11 @@ if uploaded_file is not None:
         with st.spinner("Se procesează imaginea..."):
             pred_class = pred_image(model=model, img=img, class_names=class_names)
             if pred_class == "ModerateDemented":
-                pred_class = "Alzheimer Mediu"
+                pred_class = "Alzheimer – stadiu moderat"
+            elif pred_class == "VeryMildDemented":
+                pred_class = "Alzheimer – foarte ușor afectat"
+            elif pred_class == "NonDemented":
+                pred_class = "Fără semne de Alzheimer"
+            elif pred_class == "MildDemented":
+                pred_class = "Alzheimer – stadiu ușor"
         st.success(f"Prediction: {pred_class}")
